@@ -22,6 +22,10 @@ public class Task
     private int tid;
     private int priority;
     private int burst;
+    private double arrivalTime;
+    public double completionTime;
+    private double waiting_time = completionTime - burst - arrivalTime;
+    private double turnaround_time = completionTime - arrivalTime;
 
     /**
      * We use an atomic integer to assign each task a unique task id.
@@ -88,7 +92,16 @@ public class Task
         Task rhs = (Task)other;
         return (this.tid == rhs.tid) ? true : false;
     }
-
+    public double getWaitingTime(){
+        return waiting_time;
+    }
+    public double getTurnaroundTime() {
+        return turnaround_time;
+    }
+    public void run() {
+        // Run the task and set the completion time
+        completionTime = System.currentTimeMillis();
+    }
     public String toString() {
         return
             "Name: " + name + "\n" + 
