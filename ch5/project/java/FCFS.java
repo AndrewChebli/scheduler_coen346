@@ -40,7 +40,7 @@ public class FCFS implements Algorithm {
         }
 
         long startTime = System.currentTimeMillis();
-        long processStartTime = 0;
+        long processStartTime = System.currentTimeMillis();
         while (System.currentTimeMillis() - startTime < total_turnaround_time)
         {
             if (System.currentTimeMillis() - processStartTime < this.queue.get(0).getBurst())
